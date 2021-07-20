@@ -14,6 +14,7 @@
 	export let termosUsoLink = 'https://service.teleport.com.br/legal/termos-de-uso'
 	export let aceite = 'Estou de acordo com os termos e política de privacidade.'
 	export let ok = 'Avançar'
+	export let show = false
 
 	function go() {
 		globalThis.localStorage.setItem('tadashi-splash-lgpd', 1)
@@ -22,8 +23,6 @@
 
 	let checked = false
 	$: disabled = !checked
-
-	let show = false
 
 	onMount(() => {
 		const aceito = parseBooleans(globalThis.localStorage.getItem('tadashi-splash-lgpd')) ?? false
