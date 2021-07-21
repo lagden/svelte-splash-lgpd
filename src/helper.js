@@ -1,7 +1,7 @@
 export function parseBooleans(v) {
 	const boolRegex = /^(?:true|false|1|0)$/i
 	if (boolRegex.test(v)) {
-		v = v.toLowerCase() === 'true' || v === '1'
+		v = String(v).toLowerCase() === 'true' || v === '1'
 	}
 	return v
 }
