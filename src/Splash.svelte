@@ -23,6 +23,7 @@
 
 	let checked = false
 	$: disabled = !checked
+	$: _show = parseBooleans(show)
 
 	onMount(() => {
 		const aceito = parseBooleans(globalThis.localStorage.getItem('tadashi-splash-lgpd')) ?? false
@@ -30,7 +31,7 @@
 	})
 </script>
 
-{#if show}
+{#if _show}
 	<div
 		class="_tadashi_svelte_splash"
 		transition:fix(fade)|local="{{duration: 400}}"
