@@ -15,6 +15,7 @@
 	export let aceite = 'Estou de acordo com os termos e política de privacidade.'
 	export let ok = 'Avançar'
 	export let show = false
+	export let verify = true
 
 	function go() {
 		globalThis.localStorage.setItem('tadashi-splash-lgpd', 1)
@@ -26,8 +27,10 @@
 	$: _show = parseBooleans(show)
 
 	onMount(() => {
-		const aceito = parseBooleans(globalThis.localStorage.getItem('tadashi-splash-lgpd')) ?? false
-		show = !aceito
+		if (parseBooleans(verify)) {
+			const aceito = parseBooleans(globalThis.localStorage.getItem('tadashi-splash-lgpd')) ?? false
+			show = !aceito
+		}
 	})
 </script>
 
