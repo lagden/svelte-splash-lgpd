@@ -1,4 +1,4 @@
-<svelte:options tag="tadashi-splash-lgpd" />
+<svelte:options tag="tadashi-splash-lgpd" accessors={true} />
 
 <script>
 	/* eslint no-unused-vars: 0 */
@@ -17,21 +17,29 @@
 	export let show = false
 	export let verify = true
 
+	let checked = false
+	$: disabled = !checked
+	$: _show = parseBooleans(show)
+
 	function go() {
 		globalThis.localStorage.setItem('tadashi-splash-lgpd', 1)
 		show = false
 	}
 
-	let checked = false
-	$: disabled = !checked
-	$: _show = parseBooleans(show)
-
-	onMount(() => {
+	function _verify() {
 		if (parseBooleans(verify)) {
 			const aceito = parseBooleans(globalThis.localStorage.getItem('tadashi-splash-lgpd')) ?? false
 			show = !aceito
 		}
-	})
+	}
+
+	export function reset() {
+		checked = false
+		globalThis.localStorage.removeItem('tadashi-splash-lgpd')
+		_verify()
+	}
+
+	onMount(_verify)
 </script>
 
 {#if _show}
