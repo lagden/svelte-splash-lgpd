@@ -6,17 +6,17 @@ exports[`Splash should match snapshot default 1`] = `
 <body>
   <div>
     <div
-      class="_tadashi_svelte_splash svelte-cmjg7"
+      class="_tadashi_svelte_splash svelte-18tdlsm"
       style="animation: __svelte_3516408220_0 400ms linear 0ms 1 both;"
     >
       <div
-        class="_tadashi_svelte_splash__box svelte-cmjg7"
+        class="_tadashi_svelte_splash__box svelte-18tdlsm"
       >
         <div
-          class="_tadashi_svelte_splash__content _tadashi_svelte_splash__grid svelte-cmjg7"
+          class="_tadashi_svelte_splash__content _tadashi_svelte_splash__grid svelte-18tdlsm"
         >
           <svg
-            class="_tadashi_svelte_splash__img svelte-cmjg7"
+            class="_tadashi_svelte_splash__img svelte-18tdlsm"
             viewBox="0 0 891.03 623.83"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -1470,22 +1470,31 @@ exports[`Splash should match snapshot default 1`] = `
           </svg>
            
           <h1
-            class="_tadashi_svelte_splash__title svelte-cmjg7"
+            class="_tadashi_svelte_splash__title svelte-18tdlsm"
           >
             Termos e Política de Privacidade
           </h1>
            
           <p
-            class="_tadashi_svelte_splash__text svelte-cmjg7"
+            class="_tadashi_svelte_splash__text svelte-18tdlsm"
           >
             Para continuar, você concorda com os seguintes termos de uso e política de privacidade:
           </p>
            
           <div
-            class="_tadashi_svelte_splash__link svelte-cmjg7"
+            class="_tadashi_svelte_splash__link svelte-18tdlsm"
           >
             <a
-              class="_tadashi_svelte_splash__linkbtn svelte-cmjg7"
+              class="_tadashi_svelte_splash__linkbtn svelte-18tdlsm"
+              href="https://service.teleport.com.br/legal/politica-de-privacidade"
+              rel="noopener"
+              target="_blank"
+            >
+              Política de Privacidade
+            </a>
+             
+            <a
+              class="_tadashi_svelte_splash__linkbtn svelte-18tdlsm"
               href="https://service.teleport.com.br/legal/termos-de-uso"
               rel="noopener"
               target="_blank"
@@ -1494,17 +1503,17 @@ exports[`Splash should match snapshot default 1`] = `
             </a>
              
             <a
-              class="_tadashi_svelte_splash__linkbtn svelte-cmjg7"
-              href="https://service.teleport.com.br/legal/politica-de-privacidade"
+              class="_tadashi_svelte_splash__linkbtn svelte-18tdlsm"
+              href="https://service.teleport.com.br/legal/termo-de-ratificacao"
               rel="noopener"
               target="_blank"
             >
-              Política de Privacidade
+              Termo de Retificação
             </a>
           </div>
            
           <div
-            class="_tadashi_svelte_splash__checkbox svelte-cmjg7"
+            class="_tadashi_svelte_splash__checkbox svelte-18tdlsm"
           >
             <label>
               <input
@@ -1518,7 +1527,7 @@ exports[`Splash should match snapshot default 1`] = `
           </div>
            
           <button
-            class="_tadashi_svelte_splash__btn svelte-cmjg7"
+            class="_tadashi_svelte_splash__btn svelte-18tdlsm"
             disabled=""
             type="button"
           >
@@ -1528,7 +1537,6 @@ exports[`Splash should match snapshot default 1`] = `
       </div>
     </div>
     
-    <style />
   </div>
 </body>
 `;

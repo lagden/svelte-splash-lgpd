@@ -12,6 +12,8 @@
 	export let politicaPrivacidadeLink = 'https://service.teleport.com.br/legal/politica-de-privacidade'
 	export let termosUsoLabel = 'Termos de Uso'
 	export let termosUsoLink = 'https://service.teleport.com.br/legal/termos-de-uso'
+	export let ratificaUsoLabel = 'Termo de Ratificação'
+	export let ratificaUsoLink = 'https://service.teleport.com.br/legal/termo-de-ratificacao'
 	export let aceite = 'Estou de acordo com os termos e política de privacidade.'
 	export let ok = 'Avançar'
 	export let show = false
@@ -445,8 +447,9 @@
 				<h1 class="_tadashi_svelte_splash__title">{titulo}</h1>
 				<p class="_tadashi_svelte_splash__text">{texto}</p>
 				<div class="_tadashi_svelte_splash__link">
-					<a class="_tadashi_svelte_splash__linkbtn" href="{termosUsoLink}" target="_blank" rel="noopener">{termosUsoLabel}</a>
 					<a class="_tadashi_svelte_splash__linkbtn" href="{politicaPrivacidadeLink}" target="_blank" rel="noopener">{politicaPrivacidadeLabel}</a>
+					<a class="_tadashi_svelte_splash__linkbtn" href="{termosUsoLink}" target="_blank" rel="noopener">{termosUsoLabel}</a>
+					<a class="_tadashi_svelte_splash__linkbtn" href="{ratificaUsoLink}" target="_blank" rel="noopener">{ratificaUsoLabel}</a>
 				</div>
 				<div class="_tadashi_svelte_splash__checkbox">
 					<label>
@@ -463,7 +466,7 @@
 <style>
 	:host {
 		--tadashi_svelte_splash_backdrop_filter: blur(3px);
-		--tadashi_svelte_splash_background_color: hsla(0, 0%, 0%, 0.2);
+		--tadashi_svelte_splash_background_color: hsla(0deg 0% 0% / 0.2);
 		--tadashi_svelte_splash_zindex: 1000;
 
 		--tadashi_svelte_splash__box_min_width: 320px;
@@ -473,22 +476,22 @@
 		--tadashi_svelte_splash__content_background_color: white;
 		--tadashi_svelte_splash__content_border: 0;
 		--tadashi_svelte_splash__content_border_radius: 3px;
-		--tadashi_svelte_splash__content_box_shadow: 0px 0px 8px hsla(0, 0%, 49%, 0.2);
+		--tadashi_svelte_splash__content_box_shadow: 0px 0px 8px hsl(0deg 0% 49% / 0.2);
 		--tadashi_svelte_splash__content_padding: 2em;
 
-		--tadashi_svelte_splash__close_background_color: hsl(356, 63%, 58%);
-		--tadashi_svelte_splash__close_border: 0;
-		--tadashi_svelte_splash__close_border_radius: 3px;
-		--tadashi_svelte_splash__close_color: white;
-		--tadashi_svelte_splash__close_width: 24px;
-		--tadashi_svelte_splash__close_height: 24px;
-		--tadashi_svelte_splash__close_outline: 0;
-		--tadashi_svelte_splash__close_padding: 0;
-		--tadashi_svelte_splash__close_margin: 0;
-		--tadashi_svelte_splash__close_font_size: 1.5em;
-		--tadashi_svelte_splash__close_font_family: monospace;
+		--tadashi_svelte_splash__linkbtn_background_color: hsl(0deg 0% 100%);
+		--tadashi_svelte_splash__linkbtn_color: hsl(0deg 0% 50%);
+		--tadashi_svelte_splash__linkbtn_border: 1px solid hsl(0deg 0% 70%);
 
-		--tadashi_svelte_splash__body_max_height: 100%;
+		--tadashi_svelte_splash__linkbtn___hover_background_color: hsl(0deg 0% 70%);
+		--tadashi_svelte_splash__linkbtn___hover_color: hsl(0deg 0% 100%);
+
+		--tadashi_svelte_splash__btn_height: 36px;
+		--tadashi_svelte_splash__btn_background_color: hsl(209deg 54% 58%);
+		--tadashi_svelte_splash__btn_color: hsl(0deg 0% 100%);
+
+		--tadashi_svelte_splash__btn___disabled_background_color: hsl(0deg 0% 70%);
+		--tadashi_svelte_splash__btn___disabled_color: hsl(0deg 0% 100%);
 	}
 
 	._tadashi_svelte_splash {
@@ -597,20 +600,31 @@
 		grid-gap: 0.5em;
 		grid-template-columns: 1fr;
 		grid-area: links;
+		align-items: stretch;
 	}
 
 	@media (min-width: 480px) {
 		._tadashi_svelte_splash__link {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: 1fr 1fr 1fr;
 		}
 	}
 
 	._tadashi_svelte_splash__linkbtn {
-		display: block;
+		display: flex;
 		padding: .3em;
-		border: 1px solid hsl(0deg 0% 80%);
+		border: var(--tadashi_svelte_splash__linkbtn_border);
 		border-radius: 10px;
 		text-align: center;
+		align-items: center;
+		justify-content: center;
+		color: var(--tadashi_svelte_splash__linkbtn_color);
+		text-decoration: none;
+	}
+
+	._tadashi_svelte_splash__linkbtn:active,
+	._tadashi_svelte_splash__linkbtn:hover {
+		background-color: var(--tadashi_svelte_splash__linkbtn___hover_background_color);
+		color: var(--tadashi_svelte_splash__linkbtn___hover_color);
 	}
 
 	._tadashi_svelte_splash__checkbox {
@@ -619,5 +633,24 @@
 
 	._tadashi_svelte_splash__btn {
 		grid-area: button;
+		align-items: center;
+		background-color: var(--tadashi_svelte_splash__btn_background_color);
+		border: none;
+		border-radius: 10px;
+		box-shadow: none;
+		box-sizing: border-box;
+		color: var(--tadashi_svelte_splash__btn_color);
+		cursor: pointer;
+		font-size: 1em;
+		height: var(--tadashi_svelte_splash__btn_height);
+		outline: none;
+		overflow: hidden;
+		padding: .3em;
+		position: relative;
+	}
+
+	._tadashi_svelte_splash__btn:disabled {
+		color: var(--tadashi_svelte_splash__btn___disabled_color);
+		background-color: var(--tadashi_svelte_splash__btn___disabled_background_color);
 	}
 </style>
