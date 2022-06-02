@@ -1,12 +1,22 @@
-/* global describe, afterEach, test, expect */
-/* eslint no-unused-vars: 0 */
+/* globals describe, afterEach, beforeAll, afterAll, test, expect */
 
+import timekeeper from 'timekeeper'
+import '@testing-library/jest-dom'
 import {
 	fireEvent,
 	cleanup,
 	render,
 } from '@testing-library/svelte'
 import Splash from '../src/Splash.svelte'
+
+beforeAll(() => {
+	// Para o tempo
+	timekeeper.freeze(1_604_416_038 * 1000)
+})
+
+afterAll(() => {
+	timekeeper.reset()
+})
 
 describe('Splash', () => {
 	afterEach(cleanup)

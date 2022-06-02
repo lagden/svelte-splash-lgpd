@@ -2,7 +2,12 @@
 
 'use strict'
 
-const ignoreWarnings = new Set(['a11y-no-onchange', 'a11y-label-has-associated-control', 'missing-declaration'])
+const ignoreWarnings = new Set([
+	'a11y-no-onchange',
+	'a11y-label-has-associated-control',
+	'css-unused-selector',
+	'missing-declaration',
+])
 
 module.exports = {
 	env: {
@@ -52,6 +57,7 @@ module.exports = {
 		'padding-line-between-statements': 0,
 		'no-undef-init': 0,
 		'no-template-curly-in-string': 0,
+		'no-new-func': 0,
 		'unicorn/filename-case': 0,
 		'unicorn/prevent-abbreviations': 0,
 		'unicorn/no-reduce': 0,
@@ -60,6 +66,7 @@ module.exports = {
 		'unicorn/no-useless-undefined': 0,
 		'unicorn/no-zero-fractions': 0,
 		'unicorn/prefer-query-selector': 0,
+		'unicorn/prefer-export-from': 0,
 		'unicorn/import-style': [
 			'error',
 			{
@@ -71,6 +78,7 @@ module.exports = {
 				},
 			},
 		],
+		// 'object-shorthand': 0,
 		// 'unicorn/no-abusive-eslint-disable': 0,
 		// Bug do svelte lint
 		'no-multiple-empty-lines': ['error', {max: 2, maxBOF: 2, maxEOF: 0}],

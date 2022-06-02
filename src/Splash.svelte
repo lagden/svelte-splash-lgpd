@@ -1,10 +1,9 @@
 <svelte:options tag="tadashi-splash-lgpd" accessors={true} />
 
 <script>
-	/* eslint no-unused-vars: 0 */
+	import {parseBoolean} from '@tadashi/common'
 	import {onMount} from 'svelte'
 	import {fade} from 'svelte/transition'
-	import {parseBooleans, fix} from './helper.js'
 
 	export let titulo = 'Termos e Política de Privacidade'
 	export let texto = 'Para continuar, você concorda com os seguintes termos de uso e política de privacidade:'
@@ -20,17 +19,25 @@
 	export let verify = true
 
 	let checked = false
+	let element
+
 	$: disabled = !checked
-	$: _show = parseBooleans(show)
+	$: _show = parseBoolean(show)
+	$: {
+		if (_show && element) {
+			element?.scrollIntoView({block: 'center', behavior: 'smooth'})
+		}
+	}
 
 	function go() {
 		globalThis.localStorage.setItem('tadashi-splash-lgpd', 1)
 		show = false
+		globalThis?.document?.body?.scrollIntoView({block: 'start', behavior: 'smooth'})
 	}
 
 	function _verify() {
-		if (parseBooleans(verify)) {
-			const aceito = parseBooleans(globalThis.localStorage.getItem('tadashi-splash-lgpd')) ?? false
+		if (parseBoolean(verify)) {
+			const aceito = parseBoolean(globalThis.localStorage.getItem('tadashi-splash-lgpd')) ?? false
 			show = !aceito
 		}
 	}
@@ -47,9 +54,9 @@
 {#if _show}
 	<div
 		class="_tadashi_svelte_splash"
-		transition:fix(fade)|local="{{duration: 400}}"
+		transition:fade|local="{{duration: 400}}"
 	>
-		<div class="_tadashi_svelte_splash__box">
+		<div bind:this={element} class="_tadashi_svelte_splash__box">
 			<div class="_tadashi_svelte_splash__content _tadashi_svelte_splash__grid">
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 891.03 623.83" class="_tadashi_svelte_splash__img">
 					<defs>
@@ -496,7 +503,7 @@
 
 	._tadashi_svelte_splash {
 		display: flex;
-		align-items: center;
+		align-items: safe center;
 		justify-content: center;
 		position: fixed;
 		top: 0;
@@ -508,13 +515,6 @@
 		background-color: var(--tadashi_svelte_splash_background_color);
 		backdrop-filter: var(--tadashi_svelte_splash_backdrop_filter);
 		z-index: var(--tadashi_svelte_splash_zindex);
-		align-items: flex-end;
-	}
-
-	@media (min-width: 480px) {
-		._tadashi_svelte_splash {
-			align-items: center;
-		}
 	}
 
 	._tadashi_svelte_splash__box {

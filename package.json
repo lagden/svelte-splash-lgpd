@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/svelte-splash-lgpd",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/lagden/svelte-splash-lgpd.git"
@@ -24,50 +24,50 @@
   },
   "type": "module",
   "svelte": "src/Splash.svelte",
-  "main": "dist/splash-lgpd.js",
+  "main": "dist/Splash.js",
   "files": [
     "dist",
     "src",
     "README.md"
   ],
   "scripts": {
+    "prettier": "prettier -c --plugin-search-dir=. ./src/**/*.{svelte,js}",
+    "format": "prettier --write --plugin-search-dir=. ./src/**/*.{svelte,js}",
     "eslint": "eslint --config .eslintrc.cjs --ext .js --ignore-path .gitignore .",
     "rm": "rm -rf dist",
-    "rollup": "rollup -c",
-    "rollupw": "npm run rollup -- -w",
-    "build": "run-s test rm rollup",
+    "cp": "cp dist/* public/module/.",
+    "esbuild": "node ./esbuild.config.js",
+    "build": "run-s test rm esbuild cp",
     "prepublishOnly": "npm run build",
     "pretest": "npm run eslint",
-    "_test": "jest test --coverage --coverageReporters=lcov --coverageReporters=text",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest test --coverage --coverageReporters=lcov --coverageReporters=text",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest test --env=./custom-test-env.js --coverage --coverageReporters=lcov --coverageReporters=text",
     "test:watch": "npm test -- --watch",
-    "server": "sirv public --single --host 0.0.0.0 --dev",
-    "start": "run-p server rollupw"
+    "server": "sirv public --single --host 0.0.0.0 --dev"
   },
   "devDependencies": {
-    "@babel/core": "7.15.0",
-    "@babel/eslint-parser": "7.15.0",
-    "@babel/plugin-syntax-top-level-await": "7.14.5",
-    "@babel/preset-env": "7.15.0",
-    "@rollup/plugin-commonjs": "20.0.0",
-    "@rollup/plugin-node-resolve": "13.0.4",
-    "@tadashi/flatten-object": "3.0.0",
-    "@tadashi/unflatten-object": "1.0.2",
-    "@testing-library/svelte": "3.0.3",
-    "babel-jest": "27.0.6",
-    "eslint": "7.32.0",
-    "eslint-config-xo": "0.38.0",
-    "eslint-plugin-html": "6.1.2",
-    "eslint-plugin-svelte3": "3.2.0",
-    "eslint-plugin-unicorn": "35.0.0",
-    "jest": "27.0.6",
-    "node-fetch": "2.6.1",
+    "@babel/core": "7.18.2",
+    "@babel/eslint-parser": "7.18.2",
+    "@babel/preset-env": "7.18.2",
+    "@tadashi/common": "1.2.0",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/svelte": "3.1.2",
+    "babel-jest": "28.1.0",
+    "esbuild": "0.14.42",
+    "esbuild-svelte": "0.7.1",
+    "eslint": "8.16.0",
+    "eslint-config-xo": "0.41.0",
+    "eslint-plugin-html": "6.2.0",
+    "eslint-plugin-svelte3": "4.0.0",
+    "eslint-plugin-unicorn": "42.0.0",
+    "jest": "28.1.0",
+    "jest-environment-jsdom": "28.1.0",
     "npm-run-all": "4.1.5",
-    "rollup": "2.56.2",
-    "rollup-plugin-svelte": "7.1.0",
-    "sirv-cli": "1.0.12",
-    "svelte": "3.42.1",
-    "svelte-jester": "2.0.1"
+    "prettier": "2.6.2",
+    "prettier-plugin-svelte": "2.7.0",
+    "sirv-cli": "2.0.2",
+    "svelte": "3.48.0",
+    "svelte-jester": "2.3.2",
+    "timekeeper": "2.2.0"
   },
   "babel": {
     "presets": [
@@ -79,9 +79,6 @@
           }
         }
       ]
-    ],
-    "plugins": [
-      "@babel/plugin-syntax-top-level-await"
     ]
   }
 }
