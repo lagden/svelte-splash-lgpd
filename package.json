@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/svelte-splash-lgpd",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/lagden/svelte-splash-lgpd.git"
@@ -42,7 +42,7 @@
     "pretest": "npm run eslint",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest test --env=./custom-test-env.js --coverage --coverageReporters=lcov --coverageReporters=text",
     "test:watch": "npm test -- --watch",
-    "server": "sirv public --single --host 0.0.0.0 --dev"
+    "server": "sirv public --single --host --cors --dev --port 64267"
   },
   "devDependencies": {
     "@babel/core": "7.18.2",

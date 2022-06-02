@@ -1,7 +1,7 @@
 <svelte:options tag="tadashi-splash-lgpd" accessors={true} />
 
 <script>
-	import {parseBoolean} from '@tadashi/common'
+	import {parseBoolean, parseNumber} from '@tadashi/common'
 	import {onMount} from 'svelte'
 	import {fade} from 'svelte/transition'
 
@@ -17,6 +17,7 @@
 	export let ok = 'Avançar'
 	export let show = false
 	export let verify = true
+	export let wait = 1000
 
 	let checked = false
 	let element
@@ -25,7 +26,10 @@
 	$: _show = parseBoolean(show)
 	$: {
 		if (_show && element) {
-			element?.scrollIntoView({block: 'start', behavior: 'smooth'})
+			const timeout = setTimeout(() => {
+				clearTimeout(timeout)
+				element?.scrollIntoView({block: 'center', behavior: 'smooth'})
+			}, parseNumber(wait))
 		}
 	}
 
