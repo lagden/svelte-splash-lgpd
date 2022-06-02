@@ -25,7 +25,7 @@
 	$: _show = parseBoolean(show)
 	$: {
 		if (_show && element) {
-			element?.scrollIntoView({block: 'center', behavior: 'smooth'})
+			element?.scrollIntoView({block: 'start', behavior: 'smooth'})
 		}
 	}
 
