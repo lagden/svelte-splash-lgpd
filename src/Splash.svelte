@@ -7,22 +7,28 @@
 
 	export let titulo = 'Termos e Política de Privacidade'
 	export let texto = 'Para continuar, você concorda com os seguintes termos de uso e política de privacidade:'
+	export let politicaPrivacidadeShow = true
 	export let politicaPrivacidadeLabel = 'Política de Privacidade'
 	export let politicaPrivacidadeLink = 'https://service.teleport.com.br/legal/politica-de-privacidade'
+	export let termosUsoShow = true
 	export let termosUsoLabel = 'Termos de Uso'
 	export let termosUsoLink = 'https://service.teleport.com.br/legal/termos-de-uso'
+	export let ratificaUsoShow = true
 	export let ratificaUsoLabel = 'Termo de Ratificação'
 	export let ratificaUsoLink = 'https://service.teleport.com.br/legal/termo-de-ratificacao'
 	export let aceite = 'Estou de acordo com os termos e política de privacidade.'
 	export let ok = 'Avançar'
 	export let show = false
 	export let verify = true
-	export let wait = 1000
+	export let wait = 2000
 
 	let checked = false
 	let element
 
 	$: disabled = !checked
+	$: _politicaPrivacidadeShow = parseBoolean(politicaPrivacidadeShow)
+	$: _termosUsoShow = parseBoolean(termosUsoShow)
+	$: _ratificaUsoShow = parseBoolean(ratificaUsoShow)
 	$: _show = parseBoolean(show)
 	$: {
 		if (_show && element) {
@@ -458,9 +464,15 @@
 				<h1 class="_tadashi_svelte_splash__title">{titulo}</h1>
 				<p class="_tadashi_svelte_splash__text">{texto}</p>
 				<div class="_tadashi_svelte_splash__link">
-					<a class="_tadashi_svelte_splash__linkbtn" href="{politicaPrivacidadeLink}" target="_blank" rel="noopener">{politicaPrivacidadeLabel}</a>
-					<a class="_tadashi_svelte_splash__linkbtn" href="{termosUsoLink}" target="_blank" rel="noopener">{termosUsoLabel}</a>
-					<a class="_tadashi_svelte_splash__linkbtn" href="{ratificaUsoLink}" target="_blank" rel="noopener">{ratificaUsoLabel}</a>
+					{#if _politicaPrivacidadeShow}
+						<a class="_tadashi_svelte_splash__linkbtn" href="{politicaPrivacidadeLink}" target="_blank" rel="noopener">{politicaPrivacidadeLabel}</a>
+					{/if}
+					{#if _termosUsoShow}
+						<a class="_tadashi_svelte_splash__linkbtn" href="{termosUsoLink}" target="_blank" rel="noopener">{termosUsoLabel}</a>
+					{/if}
+					{#if _ratificaUsoShow}
+						<a class="_tadashi_svelte_splash__linkbtn" href="{ratificaUsoLink}" target="_blank" rel="noopener">{ratificaUsoLabel}</a>
+					{/if}
 				</div>
 				<div class="_tadashi_svelte_splash__checkbox">
 					<label>
@@ -602,14 +614,14 @@
 	._tadashi_svelte_splash__link {
 		display: grid;
 		grid-gap: 0.5em;
-		grid-template-columns: 1fr;
+		grid-auto-columns: 1fr;
 		grid-area: links;
 		align-items: stretch;
 	}
 
 	@media (min-width: 480px) {
 		._tadashi_svelte_splash__link {
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-auto-flow: column dense;
 		}
 	}
 

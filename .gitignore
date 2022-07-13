@@ -5,14 +5,15 @@ public
 node_modules
 
 # Yarn
+.pnp.*
 .yarn/*
+!.yarnrc.yml
+# !.yarn/cache
 !.yarn/patches
-!.yarn/releases
 !.yarn/plugins
+!.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-!.yarnrc.yml
-.pnp.*
 
 # Logs
 logs
