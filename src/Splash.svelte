@@ -495,6 +495,7 @@
 		--tadashi_svelte_splash__box_min_width: 320px;
 		--tadashi_svelte_splash__box_max_width: 800px;
 		--tadashi_svelte_splash__box_padding: 1em;
+		--tadashi_svelte_splash__box_transform: translate(0px, 130px);
 
 		--tadashi_svelte_splash__content_background_color: white;
 		--tadashi_svelte_splash__content_border: 0;
@@ -538,6 +539,7 @@
 		min-width: var(--tadashi_svelte_splash__box_min_width);
 		max-width: var(--tadashi_svelte_splash__box_max_width);
 		padding: var(--tadashi_svelte_splash__box_padding);
+		transform: var(--tadashi_svelte_splash__box_transform);
 		box-sizing: border-box;
 	}
 
