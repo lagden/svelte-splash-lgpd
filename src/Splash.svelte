@@ -519,7 +519,8 @@
 
 	._tadashi_svelte_splash {
 		display: flex;
-		align-items: safe center;
+		/* align-items: safe center; */
+		align-items: flex-start;
 		justify-content: center;
 		position: fixed;
 		top: 0;
